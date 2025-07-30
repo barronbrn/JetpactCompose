@@ -1,6 +1,7 @@
 package com.example.jetpactcompose.di
 
 import com.example.jetpactcompose.data.network.ApiService
+import com.example.jetpactcompose.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,4 +25,11 @@ object AppModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
+
+    @Provides
+    @Singleton
+    // Ubah tipe data yang dikembalikan menjadi class MovieRepository
+    fun provideMovieRepository(apiService: ApiService): MovieRepository {
+        return MovieRepository(apiService)
+    }
 }

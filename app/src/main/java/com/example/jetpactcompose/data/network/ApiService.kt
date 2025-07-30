@@ -4,7 +4,7 @@ import com.example.jetpactcompose.data.dao.MovieResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-class ApiService {
+interface ApiService {
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(
         @Query("api_key") apiKey: String
